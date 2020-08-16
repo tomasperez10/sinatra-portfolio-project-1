@@ -37,7 +37,7 @@ class FavoriteVideoGamesController < ApplicationController
 
   delete '/favoritevideogames/:id/delete' do
     @favoritevideogame = FavoriteVideoGames.find(params[:id])
-    @favoritevideogame.delete
+    @favoritevideogame.delete(name: params[:name])
 
     erb :'/favorite_video_games/delete'
   end

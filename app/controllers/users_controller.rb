@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/favorite_video_games/index"
+      redirect "/favoritevideogames"
     else
       redirect "/failure"
     end
