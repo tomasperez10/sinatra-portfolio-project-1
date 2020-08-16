@@ -32,14 +32,14 @@ class FavoriteVideoGamesController < ApplicationController
     @favoritevideogame = FavoriteVideoGames.find(params[:id])
     @favoritevideogame.update(name: params[:name])
 
-    erb :'/favorite_video_games/show'
+    redirect to "/favoritevideogames/#{@favoritevideogame.id}"
   end
 
   delete '/favoritevideogames/:id/delete' do
     @favoritevideogame = FavoriteVideoGames.find(params[:id])
-    @favoritevideogame.delete(name: params[:name])
+    @favoritevideogame.delete
 
-    erb :'/favorite_video_games/delete'
+    redirect to '/favoritevideogames'
   end
 
 end

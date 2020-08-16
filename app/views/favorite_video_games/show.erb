@@ -2,13 +2,13 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Show Page</title>
+    <title>Video Game</title>
   </head>
   <body>
     <h1><%=@favoritevideogame.name%></h1>
     <form class="delete" action="/favoritevideogames/<%=@favoritevideogame.id%>/delete" method="post">
       <input id="hidden" type="hidden" name="_method" value="delete">
       <input id="delete" type="submit" name="delete" value="Delete">
-    </form>hot
+    </form>
   </body>
 </html>

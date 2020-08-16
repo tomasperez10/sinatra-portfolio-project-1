@@ -9,15 +9,14 @@
     <h1>Welcome to your favorite video game directory!</h1>
     </br>
     <h3>Your Favorite Video Games:</h3>
-    <% @favoritevideogames.each do |v| %>
-    <input type="checkbox" name="name" id="<%= v.id %>" value="<%= v.id %>"><%= v.name %></input>
+    <% @favoritevideogames.each do |favoritevideogame| %>
+    <% favoritevideogame_link = "/favoritevideogames/#{favoritevideogame.id}" %>
+    <p><a href="<%= favoritevideogame_link %>"><%= favoritevideogame.name %></a></p>
     <% end %>
     </br>
     <p>To post a new favorite video game to your wall, <a href="/favoritevideogames/new">click here!</a></p>
     </br>
-    <p>To edit what you wrote about a favorite video game, <a href ="/favoritevideogames/:id/edit">click here!</a></p>
-    </br>
-    <p>To delete a favorite video game from your wall, <a href="/favoritevideogames/:id/delete">click here!</a></p>
+    <p>To edit or delete a favorite video game, click on one of the favorite video games!
 
   </body>
 </html>
