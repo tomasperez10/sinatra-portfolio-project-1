@@ -1,1 +1,23 @@
-index.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title><%= current_user.username%>'s favorite games</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.css" type="text/css">
+  </head>
+  <body id="page-top">
+    <h1>Welcome to your favorite video game directory, <%= current_user.username%>!</h1>
+    </br>
+    <h3>Your Favorite Video Games:</h3>
+    <form method="GET" action='/favoritevideogames'>
+      <label for "name"><%= @favoritevideogames%></label>
+    </form>
+    </br>
+    <p>To post a new favorite video game to your wall, <a href="/favoritevideogames/new">click here!</a></p>
+    </br>
+    <p>To edit what you wrote about a favorite video game, <a href ="/favorite_video_games/:id/edit">click here!</a></p>
+    </br>
+    <p>To delete a favorite video game from your wall, <a href="/favorite_video_games/:id/delete">click here!</a></p>
+
+  </body>
+</html>

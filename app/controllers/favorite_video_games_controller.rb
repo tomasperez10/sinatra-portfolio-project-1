@@ -22,20 +22,20 @@ class FavoriteVideoGamesController < ApplicationController
     erb :'/favorite_video_games/show'
   end
 
-  get '/favorite_video_games/:id/edit' do
+  get '/favoritevideogames/:id/edit' do
     @favoritevideogame = FavoriteVideoGames.find(params[:id])
 
     erb :'/favorite_video_games/edit'
   end
 
-  patch '/favorite_video_games/:id' do
+  patch '/favoritevideogames/:id' do
     @favoritevideogame = FavoriteVideoGames.find(params[:id])
     @favoritevideogame.update(name: params[:name])
 
     erb :'/favorite_video_games/show'
   end
 
-  delete '/favorite_video_games/:id/delete' do
+  delete '/favoritevideogames/:id/delete' do
     @favoritevideogame = FavoriteVideoGames.find(params[:id])
     @favoritevideogame.delete
 

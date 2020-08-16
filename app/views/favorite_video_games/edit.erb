@@ -1,1 +1,20 @@
-edit.erb
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit a Video Game</title>
+  </head>
+  <body>
+    <h1>Edit <%=@favoritevideogame.name%></h1>
+    <form class="favoritevideogame" action="/favoritevideogames/<%=@favoritevideogame.id%>" method="post">
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <label for="name">Favorite Video Game:</label>
+      <input id="name" type="text" name="name" value="<%=@favoritevideogame.name%>">
+      <input id="submit" type="submit" name="submit" value="Submit">
+    </form>
+    <form class="delete" action="/favoritevideogames/<%=@favoritevideogames.id%>/delete" method="post">
+      <input id="hidden_delete" type="hidden" name="_method" value="delete">
+      <input id="delete" type="submit" name="delete" value="Delete">
+    </form>
+  </body>
+</html>
