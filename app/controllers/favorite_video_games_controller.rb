@@ -6,7 +6,7 @@ class FavoriteVideoGamesController < ApplicationController
   end
 
   post '/favoritevideogames' do
-    FavoriteVideoGames.create(name: params[:name], user_id: params[:user_id])
+    FavoriteVideoGames.create(name: params[:name], user_id: session[:user_id])
     @favoritevideogames = FavoriteVideoGames.all
 
     erb :'/favorite_video_games/index'
