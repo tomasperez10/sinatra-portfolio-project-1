@@ -12,6 +12,9 @@
     <% @favoritevideogames.each do |favoritevideogame| %>
     <% favoritevideogame_link = "/favoritevideogames/#{favoritevideogame.id}" %>
     <p><a href="<%= favoritevideogame_link %>"><%= favoritevideogame.name %></a></p>
+    <% if favoritevideogame.user %>
+    <p>Added by or created by: <%= favoritevideogame.user.username %></p>
+    <% end %>
     <% end %>
     </br>
     <p>To post a new favorite video game to your wall, <a href="/favoritevideogames/new">click here!</a></p>

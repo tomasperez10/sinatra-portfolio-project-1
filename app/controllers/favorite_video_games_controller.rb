@@ -26,7 +26,14 @@ class FavoriteVideoGamesController < ApplicationController
   get '/favoritevideogames/new' do
     @users = User.all
 
-    erb :'/favorite_video_games/new'
+    if current_user
+      erb :'/favorite_video_games/new'
+    else
+      redirect to "/login"
+    end
+
+
+    #erb :'/favorite_video_games/new'
   end
 
   get '/favoritevideogames/:id' do
@@ -44,10 +51,13 @@ class FavoriteVideoGamesController < ApplicationController
   patch '/favoritevideogames/:id' do
     @favoritevideogame = FavoriteVideoGames.find(params[:id])
     #@user = User.find(:id => params[:id])
-    @favoritevideogame.update(name: params[:name])
 
-    unless current_user == @favoritevideogame.user
-      redirect to "/favoritevideogames" and return
+
+    if current_user == @favoritevideogame.user
+      @favoritevideogame.update(name: params[:name])
+      redirect to "/favoritevideogames/#{@favoritevideogame.id}"
+    else
+      redirect to "/favoritevideogames"
     end
 
     # if !params["user_id"]["name"].empty?
@@ -55,7 +65,7 @@ class FavoriteVideoGamesController < ApplicationController
     # end
     # @favoritevideogame.save
 
-    redirect to "/favoritevideogames/#{@favoritevideogame.id}"
+
   end
 
   delete '/favoritevideogames/:id/delete' do

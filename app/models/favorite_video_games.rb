@@ -1,8 +1,8 @@
 class FavoriteVideoGames < ActiveRecord::Base
   belongs_to :user
 
-  validates :user_id, :presence => true,
-                      :uniqueness => true
+  validates :user_id, :presence => true
+                      #:uniqueness => true
 
   def self.authenticate(params)
     favorite_video_game = FavoriteVideoGames.find_by_name(params[:name]) && User.find_by_name(params[:username])
