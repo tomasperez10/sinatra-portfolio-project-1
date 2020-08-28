@@ -26,12 +26,7 @@ class FavoriteVideoGamesController < ApplicationController
   get '/favoritevideogames/new' do
     @users = User.all
 
-    if current_user
     erb :'/favorite_video_games/new'
-    else
-    redirect '/login'
-    end
-
   end
 
   get '/favoritevideogames/:id' do
@@ -66,13 +61,14 @@ class FavoriteVideoGamesController < ApplicationController
   delete '/favoritevideogames/:id/delete' do
     @favoritevideogame = FavoriteVideoGames.find(params[:id])
     #@user = User.find(:id => params[:id])
-    @favoritevideogame.delete
 
-    unless current_user == @favoritevideogame.user
-      redirect to "/favoritevideogames" and return
+
+    if current_user == @favoritevideogame.user
+      @favoritevideogame.delete
+      redirect to '/favoritevideogames'
+    else
+      redirect to '/favoritevideogames'
     end
-
-    redirect to '/favoritevideogames'
   end
 
 end
