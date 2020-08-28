@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="stylesheets/bootstrap.css" type="text/css">
   </head>
   <body id="page-top">
-    <h1>Welcome to your favorite video game directory!</h1>
+    <h1>Welcome to your favorite video game directory, <%= current_user.username %>!</h1>
     </br>
     <h3>Your Favorite Video Games:</h3>
     <% @favoritevideogames.each do |favoritevideogame| %>
