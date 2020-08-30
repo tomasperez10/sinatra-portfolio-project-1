@@ -2,8 +2,12 @@ class FavoriteVideoGamesController < ApplicationController
 
   get '/favoritevideogames' do
     @favoritevideogames = FavoriteVideoGames.all
-    @users = User.all
-    erb :'/favorite_video_games/index'
+    # @users = User.all
+    if current_user
+      erb :'/favorite_video_games/index'
+    else
+      redirect to "/login"
+    end
   end
 
   post '/favoritevideogames' do
@@ -11,7 +15,7 @@ class FavoriteVideoGamesController < ApplicationController
     @favoritevideogame = FavoriteVideoGames.create(name: params[:name], user_id: session[:user_id])
     @favoritevideogames = FavoriteVideoGames.all
 
-    @users = User.all
+    # @users = User.all
     #@user = User.find(:id => params[:id])
 
     # if !params["user_id"]["name"].empty?
@@ -24,7 +28,7 @@ class FavoriteVideoGamesController < ApplicationController
   end
 
   get '/favoritevideogames/new' do
-    @users = User.all
+    # @users = User.all
 
     if current_user
       erb :'/favorite_video_games/new'
@@ -39,13 +43,21 @@ class FavoriteVideoGamesController < ApplicationController
   get '/favoritevideogames/:id' do
     @favoritevideogame = FavoriteVideoGames.find(params[:id])
 
-    erb :'/favorite_video_games/show'
+    if current_user == @favoritevideogame.user
+      erb :'/favorite_video_games/show'
+    else
+      redirect to "/login"
+    end
   end
 
   get '/favoritevideogames/:id/edit' do
     @favoritevideogame = FavoriteVideoGames.find(params[:id])
 
-    erb :'/favorite_video_games/edit'
+    if current_user == @favoritevideogame.user
+      erb :'/favorite_video_games/edit'
+    else
+      redirect to "/login"
+    end
   end
 
   patch '/favoritevideogames/:id' do
