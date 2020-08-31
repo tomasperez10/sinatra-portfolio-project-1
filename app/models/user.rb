@@ -6,9 +6,4 @@ class User < ActiveRecord::Base
   validates :username, :presence => true,
                        :uniqueness => true
   validates :password, :presence => true
-
-  # def self.authenticate(params)
-  #  user = User.find_by_name(params[:username])
-  #  (user && user.password == params[:password]) ? user : nil
-  # end
 end

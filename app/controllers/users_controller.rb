@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
   post '/signup' do
     @user = User.create(:id => params[:id], :username => params[:username], :password => params[:password])
-    #@user = User.new(:id => params[:id], :username => params[:username], :password => params[:password])
 
     if @user.save
       redirect "/login"
